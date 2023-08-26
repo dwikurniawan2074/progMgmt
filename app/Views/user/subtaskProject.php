@@ -43,6 +43,9 @@
                                                 <th class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">Progress</h6>
                                                 </th>
+                                                <th class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0">Actions</h6>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -65,6 +68,18 @@
                                                 <td class="border-bottom-0">
                                                     <div class="d-flex align-items-center gap-2">
                                                         <span class="badge bg-warning rounded-3 fw-semibold">On-Progress</span>
+                                                    </div>
+                                                </td>
+                                                <td class="border-bottom-0" style="display: flex;">
+                                                    <div class="d-flex align-items-center gap-2 pt-2">
+                                                        <a href="<?= base_url(); ?>user/editSubtask">
+                                                            <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
+                                                        </a>
+                                                    </div>
+                                                    <div class="d-flex align-items-center gap-2 mx-1 pt-2">
+                                                        <a href="<?= base_url(); ?>user/subtaskProject">
+                                                            <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus sub task ini?');"><i class="ti ti-trash"></i></button>
+                                                        </a>
                                                     </div>
                                                 </td>
                                             </tr>

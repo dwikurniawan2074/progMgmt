@@ -36,4 +36,19 @@ class UserController extends BaseController
     {
         return view('user/tambahSubtask');
     }
+
+    public function editSubtask()
+    {
+        return view('user/editSubtask');
+    }
+
+    public function editTask()
+    {
+        return view('user/editTask');
+    }
+
+    public function editProject()
+    {
+        return view('user/editProject');
+    }
 }

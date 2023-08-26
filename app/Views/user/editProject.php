@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4">Tambah Task</h5>
+                <h5 class="card-title fw-semibold mb-4">Edit Project</h5>
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?= base_url(); ?>user/taskProject" method="GET">
+                        <form action="<?= base_url(); ?>user/index" method="GET">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
                                 <input type="text" class="form-control">
@@ -18,12 +18,16 @@
                                 <textarea class="form-control"></textarea>
                             </div>
                             <div class="mb-3">
+                                <label class="form-label">Anggota Tim</label>
+                                <textarea class="form-control"></textarea>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Tanggal Input</label>
                                 <input type="text" class="form-control">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Foto</label>
-                                <input type="file" class="form-control">
+                                <label class="form-label">Tanggal Deadline</label>
+                                <input type="text" class="form-control">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Status</label>
@@ -32,7 +36,7 @@
                                     <option value="2">Done</option>
                                 </select>
                             </div>
-                            <a href="<?= base_url(); ?>user/taskProject">
+                            <a href="<?= base_url(); ?>user/index">
                                 <button type="button" class="btn btn-danger">Back</button>
                             </a>
                             <button type="submit" class="btn btn-primary">Submit</button>
