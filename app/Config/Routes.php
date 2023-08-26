@@ -17,7 +17,10 @@ $routes->get('/login', 'LoginController::index');
 $routes->get('/admin/index', 'AdminController::index');
 $routes->get('/admin/dataAkun', 'AdminController::dataAkun');
 $routes->get('/admin/tambahAkun', 'AdminController::tambahAkun');
-$routes->get('/admin/editAkun', 'AdminController::editAkun');
+$routes->post('/admin/saveAkun', 'AdminController::saveAkun');
+$routes->get('admin/editAkun/(:num)', 'AdminController::editAkun/$1');
+$routes->post('admin/updateAkun/(:num)', 'AdminController::updateAkun/$1');
+$routes->get('admin/deleteAkun/(:num)', 'AdminController::deleteAkun/$1');
 $routes->get('/admin/taskProject', 'AdminController::taskProject');
 $routes->get('/admin/subtaskProject', 'AdminController::subtaskProject');
 
