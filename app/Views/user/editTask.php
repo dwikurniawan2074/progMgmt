@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title fw-semibold mb-4">Tambah Task</h5>
+                <h5 class="card-title fw-semibold mb-4">Edit Task</h5>
                 <div class="card">
                     <div class="card-body">
                         <form action="<?= base_url(); ?>user/taskProject" method="GET">

@@ -25,4 +25,7 @@ $routes->get('/user/subtaskProject', 'UserController::subtaskProject');
 $routes->get('/user/tambahProject', 'UserController::tambahProject');
 $routes->get('/user/tambahTask', 'UserController::tambahTask');
 $routes->get('/user/tambahSubtask', 'UserController::tambahSubtask');
+$routes->get('/user/editSubtask', 'UserController::editSubtask');
+$routes->get('/user/editTask', 'UserController::editTask');
+$routes->get('/user/editProject', 'UserController::editProject');
 
