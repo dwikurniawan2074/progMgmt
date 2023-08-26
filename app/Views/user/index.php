@@ -43,7 +43,7 @@
                         <h6 class="fw-semibold mb-0">Tanggal Selesai</h6>
                       </th>
                       <th class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">Progress</h6>
+                        <h6 class="fw-semibold mb-0">Status</h6>
                       </th>
                       <th class="border-bottom-0">
                         <h6 class="fw-semibold mb-0">Task</h6>
