@@ -13,7 +13,16 @@ class ProjectModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'id_project',
+        'nama',
+        'deskripsi',
+        'anggota_tim',
+        'tanggal_buat',
+        'tanggal_deadline',
+        'progress',
+        'id_user',
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,8 +32,35 @@ class ProjectModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'nama'            => 'required|string',
+        'deskripsi'       => 'required|string',
+        'anggota_tim'     => 'required|string',
+        'tanggal_deadline'=> 'required|valid_date',
+        'progress'        => 'required|integer',
+    ];
+    protected $validationMessages   = [
+        'nama'            => [
+            'required' => 'Nama harus diisi',
+            'string'   => 'Nama harus berupa string',
+        ],
+        'deskripsi'       => [
+            'required' => 'Deskripsi harus diisi',
+            'string'   => 'Deskripsi harus berupa string',
+        ],
+        'anggota_tim'     => [
+            'required' => 'Anggota tim harus diisi',
+            'string'   => 'Anggota tim harus berupa string',
+        ],
+        'tanggal_deadline'=> [
+            'required' => 'Tanggal deadline harus diisi',
+            'valid_date' => 'Tanggal deadline harus berupa tanggal yang valid',
+        ],
+        'progress'        => [
+            'required' => 'Progress harus diisi',
+            'integer'  => 'Progress harus berupa integer',
+        ],
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 
@@ -38,4 +74,5 @@ class ProjectModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
 }
