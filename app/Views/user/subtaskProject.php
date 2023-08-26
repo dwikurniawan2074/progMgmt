@@ -5,7 +5,14 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title fw-semibold mb-4">Detail Project</h5>
+            <div class="row mb-4">
+                <h5 class="card-title fw-semibold mb-3">Detail Task</h5>
+                <h6 class="fw-semibold">Nama : </h6>
+                <h6 class="fw-semibold">Deskripsi : </h6>
+                <h6 class="fw-semibold">Anggota Tim : </h6>
+                <h6 class="fw-semibold">Tanggal Input : </h6>
+                <h6 class="fw-semibold">Status : </h6>
+            </div>
             <div class="row">
                 <div class="col-lg-12 d-flex align-items-stretch">
                     <div class="card w-100">
@@ -41,7 +48,7 @@
                                                     <h6 class="fw-semibold mb-0">Foto</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Progress</h6>
+                                                    <h6 class="fw-semibold mb-0">Status</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">Actions</h6>
