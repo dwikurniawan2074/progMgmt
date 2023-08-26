@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProjectModel;
+use CodeIgniter\HTTP\RedirectResponse;
 use Faker\Core\DateTime;
 
 class ProjectController extends BaseController
@@ -16,7 +17,7 @@ class ProjectController extends BaseController
     public function showForm()
     {
         helper('form');
-        echo view('Admin/projectForm');
+        echo view('user/tambahProject');
     }
     /**
      * @throws \ReflectionException
@@ -32,22 +33,26 @@ class ProjectController extends BaseController
             echo view('Admin/Form', [
                 'validation' => $this->validator,
             ]);
-            return response()->json($this->validator->getErrors(), 422);
         }else{
             $projects->insert($data);
-            return redirect()->to('/')->with('success', 'Project has been created.');
+            return redirect()->to('/user/index')->with('success', 'Project has been created.');
         }
     }
 
+    /**
+     * @param $id
+     * @return void
+     */
     public function edit($id)
     {
         $data['projects'] = (new ProjectModel())->find($id);
-        echo view('Admin/editProject', $data);
+        echo view('user/editProject', $data);
     }
 
     /**
+     * @param $id
+     * @return RedirectResponse|void
      * @throws \ReflectionException
-     * @throws \Exception
      */
     public function update($id)
     {
@@ -63,14 +68,18 @@ class ProjectController extends BaseController
             ]);
         }else{
             $projects->update($id, $data);
-            return redirect()->to('/')->with('success', 'Project has been updated.');
+            return redirect()->to('/user/index')->with('success', 'Project has been updated.');
         }
     }
 
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function delete($id)
     {
         $projects = new ProjectModel();
         $projects->delete($id);
-        return redirect()->to('/')->with('success', 'Project has been deleted.');
+        return redirect()->to('/user/index')->with('success', 'Project has been deleted.');
     }
 }

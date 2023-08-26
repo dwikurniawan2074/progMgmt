@@ -42,5 +42,6 @@ final class ExampleDatabaseTest extends CIUnitTestCase
         $result = $model->builder()->where('id', $object->id)->get()->getResult();
 
         $this->assertCount(1, $result);
+
     }
 }
