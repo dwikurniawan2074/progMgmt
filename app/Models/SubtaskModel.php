@@ -13,7 +13,13 @@ class SubtaskModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'nama',
+        'deskripsi',
+        'tanggal_input',
+        'progress',
+        'id_task'
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,8 +29,26 @@ class SubtaskModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'nama'            => 'required|string',
+        'deskripsi'       => 'required|string',
+        'tanggal_input'=> 'required|valid_date',
+        'progress'        => 'required|integer',
+    ];
+    protected $validationMessages   = [
+        'nama' => [
+            'required' => 'Nama harus diisi.'
+        ],
+        'deskripsi' => [
+            'required' => 'Deskripsi harus diisi.'
+        ],
+        'tanggal_input' => [
+            'required' => 'Tanggal input harus diisi.'
+        ],
+        'progress' => [
+            'required' => 'Progress harus diisi.'
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

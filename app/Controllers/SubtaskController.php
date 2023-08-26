@@ -3,10 +3,10 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\TaskModel;
+use App\Models\SubtaskModel;
 use CodeIgniter\HTTP\RedirectResponse;
 
-class TaskController extends BaseController
+class SubtaskController extends BaseController
 {
     public function index()
     {
@@ -15,7 +15,7 @@ class TaskController extends BaseController
 
     public function showForm()
     {
-        echo view('user/tambahTask');
+        echo view('user/tambahSubtask');
     }
 
     /**
@@ -23,24 +23,24 @@ class TaskController extends BaseController
      */
     public function create()
     {
-        $task = new TaskModel();
+        $subtask = new SubtaskModel();
         $data = $this->request->getPost();
+        $rules = $subtask->getValidationRules();
         $img = $this->request->getFile('foto');
         if ($img->getError() == 4) {
-           $path = null;
+            $path = null;
         } else {
-        $path = $img->store('img',);
+            $path = $img->store('img',);
 
         }
         $data['foto'] = $path;
-        $rules = $task->getValidationRules();
-        if (!$this->validate($rules, $task->getValidationMessages())) {
-            echo view('user/tambahTask', [
+        if (!$this->validate($rules, $subtask->getValidationMessages())) {
+            echo view('user/tambahSubtask', [
                 'validation' => $this->validator,
             ]);
         } else {
-            $task->insert($data);
-            return redirect()->to('/user/index')->with('success', 'Task has been created.');
+            $subtask->insert($data);
+            return redirect()->to('/user/index')->with('success', 'Subtask has been created.');
         }
     }
 
@@ -50,20 +50,18 @@ class TaskController extends BaseController
      */
     public function edit($id)
     {
-        $data['project']= (new TaskModel())->findAll();
-        $data['tasks'] = (new TaskModel())->find($id);
-        echo view('user/editTask', $data);
+        $data['task']= (new SubtaskModel())->findAll();
+        $data['subtasks'] = (new SubtaskModel())->find($id);
+        echo view('user/editSubtask', $data);
     }
 
     /**
-     * @param $id
-     * @return RedirectResponse|void
      * @throws \ReflectionException
      */
     public function update($id)
     {
         helper('form');
-        $task = new TaskModel();
+        $subtask = new SubtaskModel();
         $data = $this->request->getPost();
         $img = $this->request->getFile('foto');
         if ($img->getError() == 4) {
@@ -73,14 +71,14 @@ class TaskController extends BaseController
 
         }
         $data['foto'] = $path;
-        $rules = $task->getValidationRules();
-        if (!$this->validate($rules, $task->getValidationMessages())) {
-            echo view('user/editTask', [
+        $rules = $subtask->getValidationRules();
+        if (!$this->validate($rules, $subtask->getValidationMessages())) {
+            echo view('user/editSubtask', [
                 'validation' => $this->validator,
             ]);
         } else {
-            $task->update($id, $data);
-            return redirect()->to('/user/index')->with('success', 'Task has been updated.');
+            $subtask->update($id, $data);
+            return redirect()->to('/user/index')->with('success', 'Subtask has been updated.');
         }
     }
 
@@ -90,8 +88,8 @@ class TaskController extends BaseController
      */
     public function delete($id)
     {
-        $task = new TaskModel();
-        $task->delete($id);
-        return redirect()->to('/user/index')->with('success', 'Task has been deleted.');
+        $subtask = new SubtaskModel();
+        $subtask->delete($id);
+        return redirect()->to('/user/index')->with('success', 'Subtask has been deleted.');
     }
 }

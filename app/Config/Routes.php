@@ -36,8 +36,12 @@ $routes->match(['get', 'post'], '/user/tambahTask/post', 'TaskController::create
 $routes->get('/user/editTask/(:num)', 'TaskController::edit/$1');
 $routes->match(['get','post'], '/user/editTask/(:num)','TaskController::update/$1');
 $routes->get('/user/deleteTask/(:num)', 'TaskController::delete/$1');
+//Subtask CRUD Route
+$routes->get('/user/tambahSubtask', 'SubtaskController::showForm');
+$routes->match(['get', 'post'], '/user/tambahSubtask/post', 'SubtaskController::create');
+$routes->get('/user/editSubtask/(:num)', 'SubtaskController::edit/$1');
+$routes->match(['get','post'], '/user/editSubtask/(:num)','SubtaskController::update/$1');
+$routes->get('/user/deleteSubtask/(:num)', 'SubtaskController::delete/$1');
 
-$routes->get('/user/tambahSubtask', 'UserController::tambahSubtask');
-$routes->get('/user/editSubtask', 'UserController::editSubtask');
-$routes->get('/user/editTask', 'UserController::editTask');
+
 
