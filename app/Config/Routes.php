@@ -5,6 +5,10 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+$routes->match(['get', 'post'], '/project/post', 'ProjectController::create');
+$routes->get('/project', 'ProjectController::index');
+
 $routes->get('/', 'LoginController::index');
 $routes->get('/login', 'LoginController::index');
 
