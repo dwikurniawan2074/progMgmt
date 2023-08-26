@@ -78,6 +78,7 @@ class ProjectController extends BaseController
      */
     public function delete($id)
     {
+        helper('form');
         $projects = new ProjectModel();
         $projects->delete($id);
         return redirect()->to('/user/index')->with('success', 'Project has been deleted.');
