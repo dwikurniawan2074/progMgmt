@@ -42,32 +42,37 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0">1</h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">User1</h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">username</h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">password</h6>
-                      </td>
-                      <td class="border-bottom-0" style="display: flex;">
-                        <div class="d-flex align-items-center gap-2">
-                          <a href="<?= base_url(); ?>admin/editAkun">
-                            <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
-                          </a>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 mx-2">
-                          <a href="<?= base_url(); ?>admin/dataAkun">
-                            <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus akun ini?');"><i class="ti ti-trash"></i></button>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                    <?php 
+                    $index = 1;
+                    foreach ($users as $user) : ?>
+                      <tr>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0"><?=$index++ ?></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1"><?= esc($user['nama_lengkap']) ?></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1"><?= esc($user['username']) ?></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1"><?= esc($user['password']) ?></h6>
+                        </td>
+                        <td class="border-bottom-0" style="display: flex;">
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="<?= base_url('admin/editAkun/' . $user['id_user']); ?>">
+                              <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
+                            </a>
+                          </div>
+                          <div class="d-flex align-items-center gap-2 mx-2">
+                            <a href="<?= base_url('admin/deleteAkun/' . $user['id_user']); ?>" onclick="return confirm('Apa anda yakin ingin menghapus akun ini?');">
+                              <button class="badge btn btn-danger fw-semibold"><i class="ti ti-trash"></i></button>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+
                   </tbody>
                 </table>
               </div>
