@@ -39,7 +39,7 @@
                                 <label class="form-label">Role</label>
                                 <select class="form-select" name="isAdmin">
                                     <option value="1">Admin</option>
-                                    <option value="0">User</option>
+                                    <option selected value="0">User</option>
                                 </select>
                             </div>
                             <a href="<?= base_url(); ?>admin/dataAkun">
