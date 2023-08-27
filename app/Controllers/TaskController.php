@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProjectModel;
+use App\Models\SubtaskModel;
 use App\Models\TaskModel;
 use CodeIgniter\HTTP\RedirectResponse;
 
@@ -19,6 +20,15 @@ class TaskController extends BaseController
         helper('form');
         $data['projects'] = (new ProjectModel())->findAll();
         echo view('user/tambahTask', $data);
+    }
+
+    public function detail($id)
+    {
+        $taskModel = new TaskModel();
+        $data['tasks'] = $taskModel->find($id);
+        $data['subtask'] = (new SubtaskModel())->where('id_task', $id)->findAll();
+
+        return view('user/subtaskProject', $data);
     }
 
     /**

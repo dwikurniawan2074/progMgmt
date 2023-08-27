@@ -13,6 +13,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
                                 <input type="text" class="form-control" name="nama">
+                                <input type="hidden" class="form-control" name="id_user" value="<?= session('user_id') ?>">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
