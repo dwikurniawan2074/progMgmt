@@ -28,7 +28,7 @@ $routes->get('/admin/subtaskProject', 'AdminController::subtaskProject');
 // Routes User Disini
 $routes->get('/user/index', 'ProjectController::index');
 $routes->get('/user/taskProject/(:num)', 'ProjectController::detail/$1');
-$routes->get('/user/subtaskProject/(:num)', 'UserController::subtaskProject/$1');
+$routes->get('/user/subtaskProject/(:num)', 'TaskController::detail/$1');
 //Project CRUD Route
 $routes->get('/user/tambahProject', 'ProjectController::showForm');
 $routes->match(['get', 'post'], '/user/tambahProject/post', 'ProjectController::create');
