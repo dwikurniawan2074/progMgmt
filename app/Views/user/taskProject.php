@@ -7,12 +7,12 @@
         <div class="card-body">
             <div class="row mb-4">
                 <h5 class="card-title fw-semibold mb-3">Detail Project</h5>
-                <h6 class="fw-semibold">Nama : </h6>
-                <h6 class="fw-semibold">Deskripsi : </h6>
-                <h6 class="fw-semibold">Anggota Tim : </h6>
-                <h6 class="fw-semibold">Tanggal Input : </h6>
-                <h6 class="fw-semibold">Tanggal Selesai : </h6>
-                <h6 class="fw-semibold">Status : </h6>
+                <h6 class="fw-semibold">Nama : <?= $projects['nama']?></h6>
+                <h6 class="fw-semibold">Deskripsi : <?= $projects['deskripsi']?> </h6>
+                <h6 class="fw-semibold">Anggota Tim : <?= $projects['anggota_tim']?></h6>
+                <h6 class="fw-semibold">Tanggal Input : <?= $projects['tanggal_buat']?></h6>
+                <h6 class="fw-semibold">Tanggal Selesai : <?= $projects['tanggal_deadline']?></h6>
+                <h6 class="fw-semibold">Status : <?= $projects['progress']?></h6>
             </div>
             <div class="row">
                 <div class="col-lg-12 d-flex align-items-stretch">
@@ -60,21 +60,26 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+                                            $i = 1;
+                                            foreach ($tasks as $task) : ?>
                                             <tr>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">1</h6>
+                                                    <h6 class="fw-semibold mb-0"><?=$i ?></h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">Dummy Task</h6>
+                                                    <h6 class="fw-semibold mb-1"><?= $task['nama'] ?></h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <p class="mb-0 fw-normal">Dummy Task</p>
+                                                    <p class="mb-0 fw-normal"><?= $task['deskripsi'] ?></p>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4">25-08-2023</h6>
+                                                    <h6 class="fw-semibold mb-0 fs-4"><?= $task['tanggal_input'] ?></h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4">[Foto]</h6>
+                                                    <h6 class="fw-semibold mb-0 fs-4">
+                                                        <img src="<?= base_url('uploads/'. $task['foto'])?>">
+                                                    </h6>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <div class="d-flex align-items-center gap-2">
@@ -101,6 +106,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php $i++; ?>
+                                            <?php endforeach; ?>
+
                                         </tbody>
                                     </table>
                                 </div>

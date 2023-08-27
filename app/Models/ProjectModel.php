@@ -8,7 +8,7 @@ class ProjectModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'projects';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_project';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
