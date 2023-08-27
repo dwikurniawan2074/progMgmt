@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ProjectModel;
 use App\Models\TaskModel;
 use CodeIgniter\HTTP\RedirectResponse;
 
@@ -15,7 +16,9 @@ class TaskController extends BaseController
 
     public function showForm()
     {
-        echo view('user/tambahTask');
+        helper('form');
+        $data['projects'] = (new ProjectModel())->findAll();
+        echo view('user/tambahTask', $data);
     }
 
     /**
@@ -23,10 +26,12 @@ class TaskController extends BaseController
      */
     public function create()
     {
+        helper('form');
         $task = new TaskModel();
         $data = $this->request->getPost();
+        $data['progress'] = 0;
         $img = $this->request->getFile('foto');
-        if ($img->getError() == 4) {
+        if ($img == null) {
            $path = null;
         } else {
         $path = $img->store('img',);
@@ -37,6 +42,7 @@ class TaskController extends BaseController
         if (!$this->validate($rules, $task->getValidationMessages())) {
             echo view('user/tambahTask', [
                 'validation' => $this->validator,
+                'projects' => (new ProjectModel())->findAll(),
             ]);
         } else {
             $task->insert($data);
@@ -50,8 +56,8 @@ class TaskController extends BaseController
      */
     public function edit($id)
     {
-        $data['project']= (new TaskModel())->findAll();
-        $data['tasks'] = (new TaskModel())->find($id);
+        helper('form');
+        $data['task'] = (new TaskModel())->find($id);
         echo view('user/editTask', $data);
     }
 
@@ -66,13 +72,12 @@ class TaskController extends BaseController
         $task = new TaskModel();
         $data = $this->request->getPost();
         $img = $this->request->getFile('foto');
-        if ($img->getError() == 4) {
-           $path = null;
+        if ($img->isValid() && !$img->hasMoved()) {
+            $path = $img->store('img');
+            $data['foto'] = $path;
         } else {
-        $path = $img->store('img',);
-
+            unset($data['foto']);
         }
-        $data['foto'] = $path;
         $rules = $task->getValidationRules();
         if (!$this->validate($rules, $task->getValidationMessages())) {
             echo view('user/editTask', [

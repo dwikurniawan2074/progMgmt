@@ -25,7 +25,7 @@ class IsUser implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('isLoggedIn') and (session()->get('isAdmin?') != '0')) {
+        if (!session()->get('isLoggedIn') and (session()->get('isAdmin?') == '0')) {
             return redirect()->to('/login');
         }
     }

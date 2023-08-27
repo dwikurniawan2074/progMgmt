@@ -8,7 +8,7 @@ class TaskModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'tasks';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_task';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -34,7 +34,6 @@ class TaskModel extends Model
         'nama'            => 'required|string',
         'deskripsi'       => 'required|string',
         'tanggal_input'=> 'required|valid_date',
-        'progress'        => 'required|integer',
     ];
     protected $validationMessages   = [
         'nama' => [
@@ -46,9 +45,6 @@ class TaskModel extends Model
         'tanggal_input' => [
             'required' => 'Tanggal input harus diisi.'
         ],
-        'progress' => [
-            'required' => 'Progress harus diisi.'
-        ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
