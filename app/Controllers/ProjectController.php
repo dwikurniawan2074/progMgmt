@@ -41,7 +41,7 @@ class ProjectController extends BaseController
         $projects = new ProjectModel();
         $data = $this->request->getPost();
         $data['progress'] = 0;
-        $data['id_user'] = session()->get('user_id');
+
         $rules = $projects->getValidationRules();
         if (!$this->validate($rules, $projects->getValidationMessages()))
         {
