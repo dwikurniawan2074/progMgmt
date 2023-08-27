@@ -35,7 +35,6 @@ class TaskController extends BaseController
            $path = null;
         } else {
         $path = $img->store('img',);
-
         }
         $data['foto'] = $path;
         $rules = $task->getValidationRules();

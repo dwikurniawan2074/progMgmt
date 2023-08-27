@@ -8,7 +8,7 @@ class SubtaskModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'subtasks';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_subtask';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -17,6 +17,7 @@ class SubtaskModel extends Model
         'nama',
         'deskripsi',
         'tanggal_input',
+        'foto',
         'progress',
         'id_task'
     ];
@@ -33,7 +34,6 @@ class SubtaskModel extends Model
         'nama'            => 'required|string',
         'deskripsi'       => 'required|string',
         'tanggal_input'=> 'required|valid_date',
-        'progress'        => 'required|integer',
     ];
     protected $validationMessages   = [
         'nama' => [
@@ -45,9 +45,6 @@ class SubtaskModel extends Model
         'tanggal_input' => [
             'required' => 'Tanggal input harus diisi.'
         ],
-        'progress' => [
-            'required' => 'Progress harus diisi.'
-        ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
