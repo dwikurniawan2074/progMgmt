@@ -8,33 +8,27 @@
                 <h5 class="card-title fw-semibold mb-4">Tambah Project</h5>
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?= base_url(); ?>user/index" method="GET">
+
+                        <form action="<?= base_url(); ?>user/tambahProject/post" method="post">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="nama">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Deskripsi</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" name="deskripsi"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Anggota Tim</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" name="anggota_tim"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tanggal Input</label>
-                                <input type="text" class="form-control">
+                                <input type="date" class="form-control" name="tanggal_buat">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Tanggal Deadline</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Status</label>
-                                <select class="form-select">
-                                    <option value="1">On-Progress</option>
-                                    <option value="2">Done</option>
-                                </select>
+                                <input type="date" class="form-control" name="tanggal_deadline">
                             </div>
                             <a href="<?= base_url(); ?>user/index">
                                 <button type="button" class="btn btn-danger">Back</button>

@@ -8,7 +8,7 @@
                 <h5 class="card-title fw-semibold mb-4">Edit Sub Task</h5>
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?= site_url('/user/editSubtask/'. $subtasks['id_subtask'] ) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= site_url('/user/editSubtask/update/'. $subtasks['id_subtask'] ) ?>" method="post" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label class="form-label">Nama</label>
                                 <input type="text" class="form-control" name="nama" value="<?= $subtasks['nama'] ?>">

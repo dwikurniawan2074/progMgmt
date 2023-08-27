@@ -8,7 +8,7 @@ class ProjectModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'projects';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'id_project';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -37,7 +37,6 @@ class ProjectModel extends Model
         'deskripsi'       => 'required|string',
         'anggota_tim'     => 'required|string',
         'tanggal_deadline'=> 'required|valid_date',
-        'progress'        => 'required|integer',
     ];
     protected $validationMessages   = [
         'nama'            => [
@@ -55,10 +54,6 @@ class ProjectModel extends Model
         'tanggal_deadline'=> [
             'required' => 'Tanggal deadline harus diisi',
             'valid_date' => 'Tanggal deadline harus berupa tanggal yang valid',
-        ],
-        'progress'        => [
-            'required' => 'Progress harus diisi',
-            'integer'  => 'Progress harus berupa integer',
         ],
     ];
     protected $skipValidation       = false;
