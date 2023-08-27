@@ -87,7 +87,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <h5 class="card-title fw-semibold" >Selamat Datang, nama_user</h5>
+                            <h5 class="card-title fw-semibold" >Selamat Datang,
+                                <?php
+                                    if (session()->get('role') == 0) {
+                                        echo "Admin";
+                                    } else {
+                                        echo "User";
+                                    }
+                                ?>
+                            </h5>
                         </li>
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">

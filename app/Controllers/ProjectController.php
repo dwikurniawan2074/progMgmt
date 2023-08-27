@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\ProjectModel;
+use App\Models\TaskModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use Faker\Core\DateTime;
 
@@ -11,9 +12,21 @@ class ProjectController extends BaseController
 {
     public function index()
     {
+        $projectModel = new ProjectModel();
+        $data['projects'] = $projectModel->where('id_user', session()->get('user_id'))->findAll();
+//        $data['user'] = session()->get('user_id');
 
+        return view('user/index', $data);
     }
 
+    public function detail($id)
+    {
+        $projectModel = new ProjectModel();
+        $data['projects'] = $projectModel->find($id);
+        $data['tasks'] = (new TaskModel())->where('id_project', $id)->findAll();
+
+        return view('user/taskProject', $data);
+    }
     public function showForm()
     {
         helper('form');
@@ -28,6 +41,7 @@ class ProjectController extends BaseController
         $projects = new ProjectModel();
         $data = $this->request->getPost();
         $data['progress'] = 0;
+        $data['id_user'] = session()->get('user_id');
         $rules = $projects->getValidationRules();
         if (!$this->validate($rules, $projects->getValidationMessages()))
         {
