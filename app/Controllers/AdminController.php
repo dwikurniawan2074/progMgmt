@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ProjectModel;
 use App\Models\UserModel;
 
 class AdminController extends BaseController
@@ -10,7 +11,15 @@ class AdminController extends BaseController
     // View
     public function index()
     {
-        return view('admin/index');
+        $userModel = new UserModel();
+        $projectModel = new ProjectModel();
+
+        $projects = $projectModel->select('projects.*, users.nama_lengkap')
+            ->join('users', 'users.id_user = projects.id_user')
+            ->findAll();
+
+        $data['project'] = $projects;
+        return view('admin/index', $data);
     }
 
 
