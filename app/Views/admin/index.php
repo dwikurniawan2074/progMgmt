@@ -46,40 +46,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0">1</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1">Dummy Project</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <p class="mb-0 fw-normal">Dummy Project</p>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-1">Nama PIC</h6>
-                                                <span class="fw-normal">Anggota 1</span>
-                                                <span class="fw-normal">Anggota 2</span>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0 fs-4">25-08-2023</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <h6 class="fw-semibold mb-0 fs-4">25-08-2023</h6>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <span class="badge bg-warning rounded-3 fw-semibold">On-Progress</span>
-                                                </div>
-                                            </td>
-                                            <td class="border-bottom-0">
-                                                <div class="d-flex align-items-center gap-2">
-                                                    <a href="<?= base_url(); ?>admin/taskProject">
-                                                        <span class="badge bg-primary rounded-1 fw-semibold"><i class="ti ti-eye"></i>&nbsp;Detail</span>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        $index = 1;
+                                        foreach ($project as $item) : ?>
+                                            <tr>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0"><?= $index++ ?></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1"><?= $item['nama'] ?></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <p class="mb-0 fw-normal"><?= $item['deskripsi'] ?></p>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1"><?= $item['nama_lengkap'] ?></h6>
+                                                    <span class="fw-normal"><?= $item['anggota_tim'] ?></span>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0 fs-4"><?= $item['tanggal_buat'] ?></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-0 fs-4"><?= $item['tanggal_deadline'] ?></h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <p><?= $item['progress'] ?>%</p>
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $item['progress'] ?>%;" aria-valuenow="<?= $item['progress'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <a href="<?= base_url(); ?>admin/taskProject">
+                                                            <span class="badge bg-primary rounded-1 fw-semibold"><i class="ti ti-eye"></i>&nbsp;Detail</span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
