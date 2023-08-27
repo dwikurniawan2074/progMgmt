@@ -8,8 +8,9 @@
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url() ?>images/logo_trafindo_only.png" />
     <link rel="stylesheet" href="<?php echo base_url() ?>modernize/src/assets/css/styles.min.css" />
     <style>
-        .page-wrapper{
-            background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), url('https://media.licdn.com/dms/image/C5622AQHQ9EHbEr9J3Q/feedshare-shrink_1280/0/1617942357833?e=1695859200&v=beta&t=1sjWje2JbNSs4biONj9zcfeba1fTbe19ja5EnMaOtIo') no-repeat;;
+        .page-wrapper {
+            background: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), url('https://media.licdn.com/dms/image/C5622AQHQ9EHbEr9J3Q/feedshare-shrink_1280/0/1617942357833?e=1695859200&v=beta&t=1sjWje2JbNSs4biONj9zcfeba1fTbe19ja5EnMaOtIo') no-repeat;
+            ;
             /* background: url('');; */
             background-size: cover;
         }
@@ -29,16 +30,21 @@
                                     <img src="<?php echo base_url() ?>images/logo_trafindo_full.png" width="180" alt="">
                                 </a>
                                 <p class="text-center">Silahkan Masuk Dengan Akunmu</p>
-                                <form>
+                                <form action="<?php base_url() ?> /loginAction " method="POST">
+                                    <?php if (session()->getFlashdata('error')) : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <?= session()->getFlashdata('error') ?>
+                                        </div>
+                                    <?php endif; ?>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Username</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     </div>
                                     <div class="mb-4">
                                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                                     </div>
-                                    <a href="<?= base_url(); ?>user/index" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+                                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                                     <div class="d-flex align-items-center justify-content-center">
                                         <p class="fs-4 mb-0 fw-bold">Ingin Membuat Akun?</p>
                                         <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Contact Admin</a>
