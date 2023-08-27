@@ -60,7 +60,6 @@ class ProjectController extends BaseController
         $projects = new ProjectModel();
         $data = $this->request->getPost();
         $rules = $projects->getValidationRules();
-        $data['tanggal_buat'] = now();
         if (!$this->validate($rules, $projects->getValidationMessages()))
         {
             echo view('Admin/editProject', [
