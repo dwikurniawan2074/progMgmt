@@ -42,6 +42,7 @@ class LoginController extends BaseController
         if ($user && password_verify($password, $user['password'])) {
             // Login sukses, simpan informasi sesi
             $this->session->set('user_id', $user['id_user']);
+            $this->session->set('username', $user['username']);
             $this->session->set('role', $user['isAdmin?']);
 
             if ($user['isAdmin?'] == 1) {
@@ -53,5 +54,11 @@ class LoginController extends BaseController
             // Login gagal, kembalikan ke halaman login dengan pesan error
             return redirect()->to('/login')->with('error', 'Username atau password salah.');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->destroy(); // Menghapus semua data sesi
+        return redirect()->to('/login'); // Redirect ke halaman login setelah logout
     }
 }

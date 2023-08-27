@@ -10,6 +10,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'LoginController::index');
 $routes->get('/login', 'LoginController::index');
 $routes->post('/loginAction', 'LoginController::loginAction');
+$routes->get('/logout', 'LoginController::logout');
 
 
 // Routes Admin Disini!

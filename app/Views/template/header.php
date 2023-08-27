@@ -39,36 +39,38 @@
                                 <span class="hide-menu">Projects Dashboard</span>
                             </a>
                         </li>
-                        <!-- tambah pengkondisian ketika yang login adalah akun admin maka tampilkan menu dibawah ini -->
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Menu Admin</span>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="<?php echo base_url() ?>admin/index" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-layout-dashboard"></i>
-                                </span>
-                                <span class="hide-menu">Projects Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="<?= base_url(); ?>admin/dataAkun" aria-expanded="false">
-                                <span>
-                                    <i class="ti ti-user"></i>
-                                </span>
-                                <span class="hide-menu">Data Akun</span>
-                            </a>
-                        </li>
-                        <!-- sampe sini -->
-                    <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
-                        <div class="d-flex">
-                            <div class="unlimited-access-title me-3">
-                                <!-- <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Logout System</h6> -->
-                                <a href="<?= base_url(); ?>login" class="btn btn-danger fs-2 fw-semibold lh-sm"><i class="ti ti-login"></i>&nbsp;Logout System</a>
+
+                        <?php if (session('role') == 1) : ?> <!-- Admin -->
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">Menu Admin</span>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="<?php echo base_url() ?>admin/index" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-layout-dashboard"></i>
+                                    </span>
+                                    <span class="hide-menu">Projects Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="<?= base_url(); ?>admin/dataAkun" aria-expanded="false">
+                                    <span>
+                                        <i class="ti ti-user"></i>
+                                    </span>
+                                    <span class="hide-menu">Data Akun</span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
+                            <div class="d-flex">
+                                <div class="unlimited-access-title me-3">
+                                    <a href="<?= base_url(); ?>/logout" class="btn btn-danger fs-2 fw-semibold lh-sm"><i class="ti ti-login"></i>&nbsp;Logout System</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -87,9 +89,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <h5 class="card-title fw-semibold" >Selamat Datang, nama_user</h5>
+                            <?php if (session()->has('username')) : ?>
+                                <h5 class="card-title fw-semibold">Selamat Datang, <?= session('username'); ?></h5>
+                            <?php endif; ?>
                         </li>
                     </ul>
+
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
                             <button type="button" class="btn btn-danger"><b><span id="time"></span>&nbsp;</b></button>
