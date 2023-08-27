@@ -7,11 +7,10 @@
         <div class="card-body">
             <div class="row mb-4">
                 <h5 class="card-title fw-semibold mb-3">Detail Task</h5>
-                <h6 class="fw-semibold">Nama : </h6>
-                <h6 class="fw-semibold">Deskripsi : </h6>
-                <h6 class="fw-semibold">Anggota Tim : </h6>
-                <h6 class="fw-semibold">Tanggal Input : </h6>
-                <h6 class="fw-semibold">Status : </h6>
+                <h6 class="fw-semibold">Nama : <?= $tasks['nama'] ?></h6>
+                <h6 class="fw-semibold">Deskripsi : <?= $tasks['deskripsi'] ?></h6>
+                <h6 class="fw-semibold">Tanggal Input : <?= $tasks['tanggal_input'] ?></h6>
+                <h6 class="fw-semibold">Progress : <?= $tasks['progress'] ?>%</h6>
             </div>
             <div class="row">
                 <div class="col-lg-12 d-flex align-items-stretch">
@@ -56,40 +55,44 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">1</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">Dummy SubTask</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <p class="mb-0 fw-normal">Dummy SubTask</p>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4">25-08-2023</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4">[Foto]</h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span class="badge bg-warning rounded-3 fw-semibold">On-Progress</span>
-                                                    </div>
-                                                </td>
-                                                <td class="border-bottom-0" style="display: flex;">
-                                                    <div class="d-flex align-items-center gap-2 pt-2">
-                                                        <a href="<?= base_url(); ?>user/editSubtask">
-                                                            <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
-                                                        </a>
-                                                    </div>
-                                                    <div class="d-flex align-items-center gap-2 mx-1 pt-2">
-                                                        <a href="<?= base_url(); ?>user/subtaskProject">
-                                                            <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus sub task ini?');"><i class="ti ti-trash"></i></button>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <?php
+                                            $index = 1;
+                                            foreach ($subtask as $item) : ?>
+                                                <tr>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0">1</h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-1"><?=$item['nama']?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <p class="mb-0 fw-normal"><?=$item['deskripsi']?></p>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0 fs-4"><?=$item['tanggal_input']?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0 fs-4"><?=$item['foto']?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <span class="badge bg-warning rounded-3 fw-semibold"><?=$item['progress']?></span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-bottom-0" style="display: flex;">
+                                                        <div class="d-flex align-items-center gap-2 pt-2">
+                                                            <a href="<?= base_url(); ?>user/editSubtask">
+                                                                <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
+                                                            </a>
+                                                        </div>
+                                                        <div class="d-flex align-items-center gap-2 mx-1 pt-2">
+                                                            <a href="<?= base_url(); ?>user/subtaskProject">
+                                                                <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus sub task ini?');"><i class="ti ti-trash"></i></button>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
