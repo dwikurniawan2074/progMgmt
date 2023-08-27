@@ -27,10 +27,11 @@ class ProjectController extends BaseController
         helper('form');
         $projects = new ProjectModel();
         $data = $this->request->getPost();
+        $data['progress'] = 0;
         $rules = $projects->getValidationRules();
         if (!$this->validate($rules, $projects->getValidationMessages()))
         {
-            echo view('Admin/Form', [
+            echo view('user/tambahProject', [
                 'validation' => $this->validator,
             ]);
         }else{
