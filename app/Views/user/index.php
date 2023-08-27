@@ -59,63 +59,64 @@ use App\Models\UserModel;
                     </tr>
                   </thead>
                   <tbody>
-                  <?php
+                    <?php
                     $i = 1;
                     foreach ($projects as $project) : ?>
-                    <tr>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0"><?=$i ?></h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1"><?= $project['nama']?>t</h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <p class="mb-0 fw-normal"><?= $project['deskripsi']?></p>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-1">
+                      <tr>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0"><?= $i ?></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1"><?= $project['nama'] ?>t</h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p class="mb-0 fw-normal"><?= $project['deskripsi'] ?></p>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-1">
                             <?php
                             $userModel = new UserModel();
                             $user = $userModel->find($project['id_user']);
                             echo $user['username'];
                             ?>
 
-                        </h6>
-                        <span class="fw-normal"><?= $project['anggota_tim']?></span>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0 fs-4"><?= $project['tanggal_buat']?></h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <h6 class="fw-semibold mb-0 fs-4"><?= $project['tanggal_deadline']?></h6>
-                      </td>
-                      <td class="border-bottom-0">
-                        <div class="d-flex align-items-center gap-2">
-                          <span class="badge bg-warning rounded-3 fw-semibold"><?= $project['progress']?></span>
-                        </div>
-                      </td>
-                      <td class="border-botton-0">
-                        <div class="d-flex align-items-center gap-2">
-                          <a href="<?= base_url(); ?>user/taskProject/<?= $project['id_project']?>">
-                            <span class="badge bg-primary rounded-1 fw-semibold"><i class="ti ti-eye"></i>&nbsp;Detail</span>
-                          </a>
-                        </div>
-                      </td>
-                      <td class="border-bottom-0" style="display: flex;">
-                        <div class="d-flex align-items-center gap-2 pt-2">
-                          <a href="<?= base_url(); ?>user/editProject/<?= $project['id_project']?> ">
-                            <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
-                          </a>
-                        </div>
-                        <div class="d-flex align-items-center gap-2 mx-1 pt-2">
-                          <a href="<?= base_url(); ?>user/deleteProject/<?= $project['id_project']?>">
-                            <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus project ini?');"><i class="ti ti-trash"></i></button>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                    <?php $i++; ?>
-                  <?php endforeach;?>
+                          </h6>
+                          <span class="fw-normal"><?= $project['anggota_tim'] ?></span>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4"><?= $project['tanggal_buat'] ?></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0 fs-4"><?= $project['tanggal_deadline'] ?></h6>
+                        </td>
+                        <td class="border-bottom-0">
+                          <p><?= $project['progress'] ?>%</p>
+                          <div class="progress">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $project['progress'] ?>%;" aria-valuenow="<?= $project['progress'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                        </td>
+                        <td class="border-botton-0">
+                          <div class="d-flex align-items-center gap-2">
+                            <a href="<?= base_url(); ?>user/taskProject/<?= $project['id_project'] ?>">
+                              <span class="badge bg-primary rounded-1 fw-semibold"><i class="ti ti-eye"></i>&nbsp;Detail</span>
+                            </a>
+                          </div>
+                        </td>
+                        <td class="border-bottom-0" style="display: flex;">
+                          <div class="d-flex align-items-center gap-2 pt-2">
+                            <a href="<?= base_url(); ?>user/editProject/<?= $project['id_project'] ?> ">
+                              <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
+                            </a>
+                          </div>
+                          <div class="d-flex align-items-center gap-2 mx-1 pt-2">
+                            <a href="<?= base_url(); ?>user/deleteProject/<?= $project['id_project'] ?>">
+                              <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus project ini?');"><i class="ti ti-trash"></i></button>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                      <?php $i++; ?>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
