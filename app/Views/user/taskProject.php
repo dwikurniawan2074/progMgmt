@@ -7,12 +7,12 @@
         <div class="card-body">
             <div class="row mb-4">
                 <h5 class="card-title fw-semibold mb-3">Detail Project</h5>
-                <h6 class="fw-semibold">Nama : <?= $projects['nama']?></h6>
-                <h6 class="fw-semibold">Deskripsi : <?= $projects['deskripsi']?> </h6>
-                <h6 class="fw-semibold">Anggota Tim : <?= $projects['anggota_tim']?></h6>
-                <h6 class="fw-semibold">Tanggal Input : <?= $projects['tanggal_buat']?></h6>
-                <h6 class="fw-semibold">Tanggal Selesai : <?= $projects['tanggal_deadline']?></h6>
-                <h6 class="fw-semibold">Status : <?= $projects['progress']?></h6>
+                <h6 class="fw-semibold">Nama : <?= $projects['nama'] ?></h6>
+                <h6 class="fw-semibold">Deskripsi : <?= $projects['deskripsi'] ?> </h6>
+                <h6 class="fw-semibold">Anggota Tim : <?= $projects['anggota_tim'] ?></h6>
+                <h6 class="fw-semibold">Tanggal Input : <?= $projects['tanggal_buat'] ?></h6>
+                <h6 class="fw-semibold">Tanggal Selesai : <?= $projects['tanggal_deadline'] ?></h6>
+                <h6 class="fw-semibold">Progress : <?= $projects['progress'] ?>%</h6>
             </div>
             <div class="row">
                 <div class="col-lg-12 d-flex align-items-stretch">
@@ -49,7 +49,7 @@
                                                     <h6 class="fw-semibold mb-0">Foto</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0">Status</h6>
+                                                    <h6 class="fw-semibold mb-0">Progress</h6>
                                                 </th>
                                                 <th class="border-bottom-0">
                                                     <h6 class="fw-semibold mb-0">Sub Task</h6>
@@ -60,53 +60,54 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
+                                            <?php
                                             $i = 1;
                                             foreach ($tasks as $task) : ?>
-                                            <tr>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0"><?=$i ?></h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1"><?= $task['nama'] ?></h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <p class="mb-0 fw-normal"><?= $task['deskripsi'] ?></p>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4"><?= $task['tanggal_input'] ?></h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-0 fs-4">
-                                                        <img src="<?= base_url('uploads/'. $task['foto'])?>">
-                                                    </h6>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <span class="badge bg-warning rounded-3 fw-semibold">On-Progress</span>
-                                                    </div>
-                                                </td>
-                                                <td class="border-bottom-0">
-                                                    <div class="d-flex align-items-center gap-2">
-                                                        <a href="<?= base_url(); ?>user/subtaskProject">
-                                                            <span class="badge bg-primary rounded-1 fw-semibold"><i class="ti ti-eye"></i>&nbsp;Detail</span>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td class="border-bottom-0" style="display: flex;">
-                                                    <div class="d-flex align-items-center gap-2 pt-2">
-                                                        <a href="<?= base_url(); ?>user/editTask">
-                                                            <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
-                                                        </a>
-                                                    </div>
-                                                    <div class="d-flex align-items-center gap-2 mx-1 pt-2">
-                                                        <a href="<?= base_url(); ?>user/taskProject">
-                                                            <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus task ini?');"><i class="ti ti-trash"></i></button>
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <?php $i++; ?>
+                                                <tr>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0"><?= $i ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-1"><?= $task['nama'] ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <p class="mb-0 fw-normal"><?= $task['deskripsi'] ?></p>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0 fs-4"><?= $task['tanggal_input'] ?></h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <h6 class="fw-semibold mb-0 fs-4">
+                                                            <img src="<?= base_url('uploads/' . $task['foto']) ?>">
+                                                        </h6>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <p><?= $task['progress'] ?>%</p>
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-warning" role="progressbar" style="width: <?= $task['progress'] ?>%;" aria-valuenow="<?= $task['progress'] ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-bottom-0">
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <a href="<?= base_url(); ?>user/subtaskProject/<?= $task['id_task'] ?>">
+                                                                <span class="badge bg-primary rounded-1 fw-semibold"><i class="ti ti-eye"></i>&nbsp;Detail</span>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="border-bottom-0" style="display: flex;">
+                                                        <div class="d-flex align-items-center gap-2 pt-2">
+                                                            <a href="<?= base_url(); ?>user/editTask">
+                                                                <button class="badge btn btn-warning fw-semibold"><i class="ti ti-pencil"></i></button>
+                                                            </a>
+                                                        </div>
+                                                        <div class="d-flex align-items-center gap-2 mx-1 pt-2">
+                                                            <a href="<?= base_url(); ?>user/taskProject">
+                                                                <button class="badge btn btn-danger fw-semibold" onclick="return confirm('Apa anda yakin ingin menghapus task ini?');"><i class="ti ti-trash"></i></button>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <?php $i++; ?>
                                             <?php endforeach; ?>
 
                                         </tbody>
